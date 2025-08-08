@@ -9,6 +9,9 @@ export type Article = {
   date: string
   readTime: string
   tags?: string[]
+  
+  
+  
   render: () => ReactNode
 }
 
@@ -278,11 +281,13 @@ export const articles: Article[] = [
 
 function ArticleBody({ children }: { children: ReactNode }) {
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden md:overflow-visible">
       {/* background beams */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 right-1/4 h-80 w-[120%] -rotate-12 bg-gradient-to-r from-fuchsia-500/20 via-violet-500/10 to-transparent blur-3xl dark:from-fuchsia-500/25 dark:via-violet-500/20" />
-        <div className="absolute top-16 left-1/3 h-72 w-[110%] rotate-12 bg-gradient-to-l from-fuchsia-600/15 via-purple-500/10 to-transparent blur-3xl dark:from-fuchsia-600/25 dark:via-purple-500/20" />
+        <div className="absolute -top-24 left-1/2 h-80 w-[120vw] -translate-x-1/2 -rotate-12 bg-gradient-to-r from-fuchsia-500/20 via-violet-500/10 to-transparent blur-3xl dark:from-fuchsia-500/25 dark:via-violet-500/20"
+       aria-hidden="true" />
+        <div className="absolute top-16 left-1/2 h-72 w-[110vw] -translate-x-1/2 rotate-12 bg-gradient-to-l from-fuchsia-600/15 via-purple-500/10 to-transparent blur-3xl dark:from-fuchsia-600/25 dark:via-purple-500/20"
+       aria-hidden="true" />
       </div>
       <div className="prose prose-slate mx-auto max-w-3xl rtl:prose-ul:pr-5 prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground dark:prose-invert">
         {children}
@@ -290,6 +295,10 @@ function ArticleBody({ children }: { children: ReactNode }) {
     </div>
   )
 }
+
+
+
+
 
 function HeroParagraph({ children }: { children: ReactNode }) {
   return <p className="mb-6 text-lg leading-relaxed text-muted-foreground">{children}</p>

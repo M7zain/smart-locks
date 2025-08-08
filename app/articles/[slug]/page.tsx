@@ -59,7 +59,7 @@ export default function ArticlePage({ params }: PageProps) {
             <div className="absolute -bottom-32 -inset-x-20 h-80 rounded-[100%] bg-gradient-to-tl from-fuchsia-500/15 via-violet-500/15 to-transparent blur-3xl dark:from-fuchsia-500/20 dark:via-violet-500/20" />
           </div>
 
-          <div className="container mx-auto max-w-5xl px-4 py-10 sm:py-14">
+          <div className="container mx-auto max-w-4xl px-4 py-8 sm:py-10 md:py-14">
             <Link
               href="/#articles"
               className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
@@ -69,7 +69,7 @@ export default function ArticlePage({ params }: PageProps) {
               العودة إلى المقالات
             </Link>
 
-            <h1 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">{article.title}</h1>
+            <h1 className="mt-4 text-2xl font-extrabold leading-tight sm:text-3xl md:text-4xl">{article.title}</h1>
             <p className="mt-2 max-w-3xl text-muted-foreground">{article.description}</p>
 
             <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
@@ -102,7 +102,7 @@ export default function ArticlePage({ params }: PageProps) {
         </section>
 
         {/* Body */}
-        <section className="container mx-auto max-w-5xl px-4 py-10 sm:py-12">
+        <section className="container mx-auto max-w-4xl px-4 py-8 sm:py-10 md:py-12">
           {article.render()}
         </section>
 
