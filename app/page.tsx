@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Check, Fingerprint, Wifi, KeyboardIcon as Keypad, Smartphone, Shield, Lock, PhoneCall, Clock, MapPin, BadgeCheck, Star } from 'lucide-react'
+import { usePhoneCall } from '@/hooks/use-phone-call'
 import { cn } from "@/lib/utils"
 import { useEffect } from "react"
 import { ArticleCard } from "@/components/article-card"
@@ -13,6 +14,8 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export default function Page() {
+  const { handlePhoneCall } = usePhoneCall()
+  
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth"
     return () => {
@@ -73,8 +76,8 @@ export default function Page() {
                   <FeatureItem icon={<Shield className="h-5 w-5 text-fuchsia-600 dark:text-fuchsia-300" />}>تشفير متقدم وإنذارات عبث ومحاولات دخول</FeatureItem>
                 </ul>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <Button asChild size="lg" className="bg-fuchsia-600 hover:bg-fuchsia-700">
-                    <Link href="tel:67727212" aria-label="اتصل الآن للتركيب الفوري">اتصل الآن للتركيب الفوري</Link>
+                  <Button size="lg" className="bg-fuchsia-600 hover:bg-fuchsia-700" onClick={handlePhoneCall}>
+                    اتصل الآن للتركيب الفوري
                   </Button>
                   <Button asChild size="lg" variant="outline">
                     <Link href="#types">تصفح أنواع الأقفال</Link>
@@ -262,8 +265,8 @@ export default function Page() {
               </ol>
             </div>
             <div className="mt-10 flex justify-center">
-              <Button asChild size="lg" className="bg-fuchsia-600 hover:bg-fuchsia-700">
-                <Link href="tel:67727212">احجز فني أقفال الآن</Link>
+              <Button size="lg" className="bg-fuchsia-600 hover:bg-fuchsia-700" onClick={handlePhoneCall}>
+                احجز فني أقفال الآن
               </Button>
             </div>
           </div>
@@ -461,7 +464,7 @@ export default function Page() {
                 </p>
                 <div className="mt-6 space-y-3">
                   <ContactRow icon={<PhoneCall className="h-5 w-5 text-fuchsia-600" aria-hidden />} title="الهاتف">
-                    <Link href="tel:67727212" className="hover:underline">67727212</Link>
+                    <button onClick={handlePhoneCall} className="hover:underline">67727212</button>
                   </ContactRow>
                   <ContactRow icon={<MapPin className="h-5 w-5 text-emerald-600" aria-hidden />} title="الموقع">
                     الكويت – نخدم جميع المناطق
@@ -471,8 +474,8 @@ export default function Page() {
                   </ContactRow>
                 </div>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Button asChild className="bg-fuchsia-600 hover:bg-fuchsia-700">
-                    <Link href="tel:67727212">اتصل الآن</Link>
+                  <Button className="bg-fuchsia-600 hover:bg-fuchsia-700" onClick={handlePhoneCall}>
+                    اتصل الآن
                   </Button>
                   <Button asChild variant="outline">
                     <Link href="#types">شاهد الأنواع</Link>
@@ -658,6 +661,8 @@ function TestimonialCard({ name, text }: { name: string; text: string }) {
 }
 
 function FloatingCTA() {
+  const { handlePhoneCall } = usePhoneCall();
+
   return (
     <>
       {/* WhatsApp floating button - left bottom */}
@@ -686,32 +691,33 @@ function FloatingCTA() {
 
       {/* Mobile: floating button bottom-right (not full width) */}
       <div className="fixed bottom-6 right-6 z-50 block sm:hidden">
-        <Link
-          href="tel:67727212"
+        <button
+          onClick={handlePhoneCall}
           className={cn(
             "flex h-14 w-14 items-center justify-center rounded-full bg-fuchsia-600 text-white shadow-xl",
             "ring-1 ring-fuchsia-500/50 hover:bg-fuchsia-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300",
-            "transition-all duration-200 hover:scale-110"
+            "transition-all duration-200 hover:scale-110 active:scale-95"
           )}
           aria-label="اتصل الآن للتركيب الفوري"
         >
           <PhoneCall className="h-6 w-6" aria-hidden />
-        </Link>
+        </button>
       </div>
       
       {/* Desktop: floating pill bottom-right */}
       <div className="fixed bottom-6 right-6 z-50 hidden sm:block">
-        <Link
-          href="tel:67727212"
+        <button
+          onClick={handlePhoneCall}
           className={cn(
             "flex items-center gap-2 rounded-full bg-fuchsia-600 px-5 py-3 text-white shadow-xl",
-            "ring-1 ring-fuchsia-500/50 hover:bg-fuchsia-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300"
+            "ring-1 ring-fuchsia-500/50 hover:bg-fuchsia-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300",
+            "transition-all duration-200 active:scale-95"
           )}
           aria-label="احجز فني أقفال الآن"
         >
           <PhoneCall className="h-5 w-5" aria-hidden />
           <span className="font-semibold">احجز فني أقفال الآن</span>
-        </Link>
+        </button>
       </div>
     </>
   )

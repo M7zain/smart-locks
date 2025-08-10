@@ -1,7 +1,12 @@
+"use client"
+
 import Link from "next/link"
 import { Lock } from 'lucide-react'
+import { usePhoneCall } from "@/hooks/use-phone-call"
 
 export function SiteFooter() {
+  const { handlePhoneCall } = usePhoneCall()
+  
   return (
     <footer className="border-t">
       <div className="container mx-auto max-w-7xl px-4 py-8">
@@ -37,7 +42,7 @@ export function SiteFooter() {
           <div>
             <h3 className="font-semibold">تواصل</h3>
             <ul className="mt-2 space-y-2 text-sm">
-              <li><Link href="tel:67727212" className="hover:underline">الهاتف: 67727212</Link></li>
+              <li><button onClick={handlePhoneCall} className="hover:underline">الهاتف: 67727212</button></li>
               <li>الكويت – جميع المناطق</li>
               <li>يوميًا 9 صباحًا – 11 مساءً</li>
             </ul>

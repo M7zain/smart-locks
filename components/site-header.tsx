@@ -4,8 +4,11 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Lock } from 'lucide-react'
 import { ThemeToggle } from "@/components/theme-toggle"
+import { usePhoneCall } from "@/hooks/use-phone-call"
 
 export function SiteHeader() {
+  const { handlePhoneCall } = usePhoneCall()
+  
   return (
     <header className="sticky top-0 z-50 border-b backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto max-w-7xl px-4">
@@ -27,16 +30,16 @@ export function SiteHeader() {
             <HeaderLink href="/#contact">اتصل بنا</HeaderLink>
             <div className="ms-2 flex items-center gap-2">
               <ThemeToggle />
-              <Button asChild className="bg-fuchsia-600 hover:bg-fuchsia-700">
-                <Link href="tel:67727212" aria-label="اتصل الآن">اتصل الآن</Link>
+              <Button className="bg-fuchsia-600 hover:bg-fuchsia-700" onClick={handlePhoneCall} aria-label="اتصل الآن">
+                اتصل الآن
               </Button>
             </div>
           </nav>
 
           <div className="ms-auto flex items-center gap-2 md:hidden">
             <ThemeToggle />
-            <Button asChild size="sm" className="bg-fuchsia-600 hover:bg-fuchsia-700">
-              <Link href="tel:67727212" aria-label="اتصل الآن">اتصل</Link>
+            <Button size="sm" className="bg-fuchsia-600 hover:bg-fuchsia-700" onClick={handlePhoneCall} aria-label="اتصل الآن">
+              اتصل
             </Button>
           </div>
         </div>
