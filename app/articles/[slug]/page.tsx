@@ -4,10 +4,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { CalendarDays, Clock3, Home } from 'lucide-react'
 import { articles } from "@/lib/articles"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
+import { SiteHeaderStatic } from "@/components/site-header-static"
+import { SiteFooterStatic } from "@/components/site-footer-static"
 import { ArticleCard } from "@/components/article-card"
-import { ScrollToTop } from "@/components/scroll-to-top"
+import { ScrollToTopStatic } from "@/components/scroll-to-top-static"
 
 type PageProps = {
   params: { slug: string }
@@ -48,9 +48,9 @@ export default function ArticlePage({ params }: PageProps) {
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeaderStatic />
       <main>
-        <ScrollToTop />
+        <ScrollToTopStatic />
 
         {/* Article hero */}
         <section className="relative overflow-hidden">
@@ -124,7 +124,7 @@ export default function ArticlePage({ params }: PageProps) {
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooterStatic />
     </>
   )
 }

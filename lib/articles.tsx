@@ -1,5 +1,6 @@
 import Image from "next/image"
 import type { ReactNode } from "react"
+import { CTAStatic } from "@/components/cta-static"
 
 export type Article = {
   slug: string
@@ -61,7 +62,7 @@ export const articles: Article[] = [
           </ul>
         </Section>
 
-        <CTA />
+        <CTAStatic />
       </ArticleBody>
     ),
   },
@@ -109,7 +110,7 @@ export const articles: Article[] = [
           </p>
         </Section>
 
-        <CTA />
+        <CTAStatic />
       </ArticleBody>
     ),
   },
@@ -151,7 +152,7 @@ export const articles: Article[] = [
           </ul>
         </Section>
 
-        <CTA />
+        <CTAStatic />
       </ArticleBody>
     ),
   },
@@ -185,7 +186,7 @@ export const articles: Article[] = [
           caption="تشطيبات متينة وتصميم مستقبلي أنيق"
         />
 
-        <CTA />
+        <CTAStatic />
       </ArticleBody>
     ),
   },
@@ -232,7 +233,7 @@ export const articles: Article[] = [
           </p>
         </Section>
 
-        <CTA />
+        <CTAStatic />
       </ArticleBody>
     ),
   },
@@ -271,7 +272,7 @@ export const articles: Article[] = [
           caption="صُنعت للحماية — ومع الإعداد الصحيح تحصل على أقصى فائدة"
         />
 
-        <CTA />
+        <CTAStatic />
       </ArticleBody>
     ),
   },
@@ -331,35 +332,4 @@ function ImageBlock({ src, alt, caption }: { src: string; alt: string; caption?:
   )
 }
 
-function CTA() {
-  return (
-    <div className="mt-10 flex items-center justify-center">
-      <button
-        onClick={() => {
-          const phoneNumber = "67727212";
-          try {
-            window.location.href = `tel:${phoneNumber}`;
-            setTimeout(() => {
-              if (window.location.href.indexOf('tel:') === -1) {
-                window.location.href = `tel:${phoneNumber}`;
-              }
-            }, 100);
-            setTimeout(() => {
-              const tempLink = document.createElement('a');
-              tempLink.href = `tel:${phoneNumber}`;
-              tempLink.style.display = 'none';
-              document.body.appendChild(tempLink);
-              tempLink.click();
-              document.body.removeChild(tempLink);
-            }, 200);
-          } catch (error) {
-            window.open(`tel:${phoneNumber}`, '_blank');
-          }
-        }}
-        className="rounded-full bg-fuchsia-600 px-6 py-3 text-sm font-semibold text-white shadow ring-1 ring-fuchsia-500/50 hover:bg-fuchsia-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300"
-      >
-        اتصل الآن للتركيب الفوري
-      </button>
-    </div>
-  )
-}
+
